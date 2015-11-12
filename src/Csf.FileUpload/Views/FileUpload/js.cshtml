@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "ajax 文件上传";
+}
+<h2>js异步上传文件</h2>
+<div>
+    <div class="control-group">
+        <label class="control-label">图片</label>
+        <input type="text" id="inp-avatar" />
+        <input type="button" value="上传图片" id="upload" class="btn" />
+    </div>
+    <div class="control-group">
+        <label class="control-label">图片预览</label>
+        <img id="img-avatar" style="max-height:200px;" />
+    </div>
+</div>
+@section  scripts{
+    <script src="~/js/jquery.upload.v2.js"></script>
+
+    <script>
+        $(function () {
+            $("#upload").upload({
+                action: "@Url.Action("JsUpload")",  //上传地址
+                fileName: "fromfile",               //文件名称。用于后台接收
+                params: {
+                    subdir: 'img',
+                    fntype: 4,
+                    dntype: 5
+                },                                  //参数
+                accept: ".jpg,.png,.gif,.bmp",      //文件类型,前台js验证
+                complete: function (data) {         //上传完成
+                    eval('data=' + data);
+                    if (data.ret == 1) {
+                        $("#inp-avatar").val(data.src);
+                        $("#img-avatar").prop("src", data.src);
+                    } else
+                        alert(data.msg)
+                }
+                //,
+                //submit: function () {   //提交之前
+                //}
+            });
+        })
+    </script>
+}

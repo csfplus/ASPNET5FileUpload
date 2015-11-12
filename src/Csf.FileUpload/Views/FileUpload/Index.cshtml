@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "文件上传";
+}
+@model Csf.FileUpload.Utils.FileUpload
+<h2>文件上传</h2>
+
+<div>
+    <form method="post" enctype="multipart/form-data">
+        <div class="control-group">
+            <label asp-for="SubDir"></label>
+            <input type="text" asp-for="SubDir" class="form-control" />
+        </div>
+        <div class="control-group">
+            <label asp-for="DNType"></label>
+            <select asp-for="DNType" asp-items="ViewBag.DNTypes" class="form-control"></select>
+        </div>
+        <div class="control-group">
+            <label asp-for="FNType"></label>
+            <select asp-for="FNType" asp-items="ViewBag.FNTypes" class="form-control"></select>
+        </div>
+        <div class="control-group">
+            <label asp-for="FromFile"></label>
+            <input type="file" asp-for="FromFile" class="form-control" />
+            <span asp-validation-for="FromFile" class="error"></span>
+        </div>
+        <div asp-validation-summary="ValidationSummary.ModelOnly" class="error"></div>
+
+        <button type="submit" class="btn  btn-default">上传</button>
+        <br />上传成功后的路径为：<a href="@Model.TargetFilePath">@Model.TargetFilePath</a>
+    </form>
+</div>

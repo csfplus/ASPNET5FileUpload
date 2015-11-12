@@ -1,0 +1,19 @@
+﻿@model Csf.FileUpload.Models.User
+@{
+    ViewBag.Title = "查看用户信息";
+}
+<h2>查看用户</h2>
+<div>
+    <dl class="dl-horizontal">
+        <dt>@Html.DisplayNameFor(a => a.UserId)</dt>
+        <dd>@Model.UserId</dd>
+        <dt>@Html.DisplayNameFor(a => a.UserName)</dt>
+        <dd>@Model.UserName</dd>
+        <dt>@Html.DisplayNameFor(a => a.Tel)</dt>
+        <dd>@Model.Tel</dd>
+        <dt>@Html.DisplayNameFor(a => a.Email)</dt>
+        <dd>@Model.Email</dd>
+        <dt>@Html.DisplayNameFor(a => a.Avatar)</dt>
+        <dd><img data-src="holder.js/200*150" src="@Model.Avatar" /></dd>
+    </dl>
+</div>

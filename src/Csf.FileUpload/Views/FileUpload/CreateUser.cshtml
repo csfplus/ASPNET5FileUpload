@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "添加用户";
+}
+@model Csf.FileUpload.Models.User
+<h2>添加用户</h2>
+<link href="~/lib/bootstrap-fileupload/bootstrap-fileupload.css" rel="stylesheet" />
+<div>
+    <form method="post" enctype="multipart/form-data">
+        <div class="control-group">
+            <label asp-for="UserName"></label>
+            <input type="text" asp-for="UserName" class="form-control" />
+            <span asp-validation-for="UserName" class="error"></span>
+        </div>
+        <div class="control-group">
+            <label asp-for="UserPwd"></label>
+            <input type="password" asp-for="UserPwd" class="form-control" />
+            <span asp-validation-for="UserPwd" class="error"></span>
+        </div>
+        <div class="control-group">
+            <label asp-for="Tel"></label>
+            <input type="tel" asp-for="Tel" class="form-control" />
+            <span asp-validation-for="Tel" class="error"></span>
+        </div>
+        <div class="control-group">
+            <label asp-for="Email"></label>
+            <input type="email" asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="error"></span>
+        </div>
+        <div class="control-group">
+            <label asp-for="Avatar"></label>
+            <div class="fileupload fileupload-new" data-provides="fileupload">
+                <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+                    <img data-src="holder.js/100%x100%" alt="图片缩略图" src="~/lib/bootstrap-fileupload/thumb.svg">
+                </div>
+                <div class="fileupload-preview fileupload-exists thumbnail"
+                     style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+                <div>
+                    <span class="btn btn-file btn-info">
+                        <span class="fileupload-new">选择图片</span>
+                        <span class="fileupload-exists">更改</span>
+                        <input type="file" name="img" />
+                    </span>
+                    <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">移除</a>
+                </div>
+                <span asp-validation-for="Avatar" class="error"></span>
+            </div>
+            <div asp-validation-summary="ValidationSummary.ModelOnly" class="error"></div>
+
+            <button type="submit" class="btn  btn-default">提交保存</button>
+
+    </form>
+</div>
+@section scripts{
+    <script src="~/lib/bootstrap-fileupload/bootstrap-fileupload.js"></script>
+}
